@@ -1,0 +1,39 @@
+<mat-toolbar class="appbar">
+  <span style="text-transform: uppercase"
+    >Mostra/Nascondi Colonne Aggiuntive</span
+  >
+  <span class="dialog-toolbar-spacer"></span>
+  <button mat-icon-button aria-label="Close dialog" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="list-container">
+  <ul>
+    <li>
+      <mat-checkbox
+        color="primary"
+        [checked]="checkedAll"
+        [indeterminate]="!checkedAll && !uncheckedAll"
+        (click)="onSelectAllCheck($event)"
+        >Seleziona tutto</mat-checkbox
+      >
+    </li>
+    <li *ngFor="let column of columns; let i = index">
+      <mat-checkbox
+        [checked]="column.checked"
+        color="primary"
+        (click)="checkColumn($event, i)"
+      >
+        {{ column.name }}
+      </mat-checkbox>
+    </li>
+  </ul>
+</div>
+
+<div class="buttons">
+  <!-- <button mat-raised-button color="basic" (click)="close()">Annulla</button> -->
+  <button mat-raised-button color="primary" (click)="confirm()">
+    Conferma
+  </button>
+</div>

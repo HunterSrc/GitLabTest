@@ -1,0 +1,39 @@
+<div>
+  <div class="gantt-buttons">
+    <mat-button-toggle
+      (click)="onHideShowProjectClick()"
+      (value)="(showProjectBar)"
+    >
+      Mostra/Nascondi Gantt di Progetto </mat-button-toggle
+    ><mat-button-toggle (click)="onZeroWeightClick()">
+      Mostra/Nascondi Elementi con Peso 0
+    </mat-button-toggle>
+    <mat-button-toggle
+      (click)="onColumnsClick()"
+      (change)="onColumnsChange($event)"
+    >
+      Gestisci Colonne Aggiuntive
+    </mat-button-toggle>
+    <mat-button-toggle (click)="onProjectStructureClick()">
+      Visualizza la struttura del progetto
+    </mat-button-toggle>
+  </div>
+  <div class="gantt-wrapper gantt-inner-wrapper">
+    <lib-execution-tasks
+      [availableColumns]="currentHeaderColumnsList"
+      [currentId]="currentIds"
+      [locked]="ganttLocked"
+      [editableTypes]="editableTypes"
+      [showZeroWeightRows]="showZeroWeightRows"
+      [isNominativa]="isNominativa"
+      (saveGantt)="onSaveGantt()"
+    ></lib-execution-tasks>
+    <div class="grid-viewport">
+      <lib-execution-grid
+        [showZeroWeightRows]="showZeroWeightRows"
+        [showProjectBar]="showProjectBar"
+        [isNominativa]="isNominativa"
+      ></lib-execution-grid>
+    </div>
+  </div>
+</div>

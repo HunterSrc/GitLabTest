@@ -1,0 +1,19 @@
+<div class="gantt-options-container">
+  <mat-button-toggle [checked]="isAtemporal" (click)="switchToAtemporal()"
+    >MAP ATemporale</mat-button-toggle
+  >
+  <mat-button-toggle [checked]="!isAtemporal" (click)="switchToTemporal()"
+    >MAP Temporale</mat-button-toggle
+  >
+</div>
+<div class="gantt-wrapper" id="gantt">
+  <lib-atemporal-tasks
+    [locked]="locked"
+    [editableTypes]="editableTypes"
+    [atemporal]="isAtemporal"
+    #tasks
+  ></lib-atemporal-tasks>
+  <div class="grid-viewport">
+    <lib-atemporal-grid #grid></lib-atemporal-grid>
+  </div>
+</div>

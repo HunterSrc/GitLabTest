@@ -1,0 +1,131 @@
+<div class="main-container">
+  <div class="tbl-header" #header>
+    <ng-container *ngFor="let th of headers" class="col-container">
+      <div class="tbl-header-item">
+        <span class="tbl-head">{{ th?.name }}</span>
+      </div>
+    </ng-container>
+  </div>
+  <form [formGroup]="mainForm">
+    <div class="tbl" #itemsTable formArrayName="itemsForms">
+      <ng-container
+        *ngFor="let item of itemsForms.controls; let i = index"
+        class="row-container"
+      >
+        <ng-container [formGroupName]="i">
+          <div class="tbl-item gantt-item small-font activity-item">
+            <div [ngClass]="getPadding(i)">
+              <div class="flex--start-col">
+                <div
+                  class="activity-gantt-item"
+                  [class]="getWidth(i)"
+                  [ngClass]="{ 'no-arrow-button': !isCollapsable(i) }"
+                >
+                  <span>{{ getItemAtIndex(i).externalCode }}</span>
+                  <button
+                    mat-icon-button
+                    *ngIf="isCollapsable(i)"
+                    class="btn--grid-line"
+                    (click)="onCollapseToggle(i)"
+                  >
+                    <mat-icon
+                      >{{
+                        isCollapsed(i)
+                          ? 'keyboard_arrow_up'
+                          : 'keyboard_arrow_down'
+                      }}
+                    </mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ultimo map autorizzato inizio -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="lastReauthStartDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- ultimo map autorizzato fine -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="lastReauthEndDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- actual inizio -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="startDateActual"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- actual fine -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="endDateActual"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- forecast inizio -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="startDateForecast"
+              placeholder="gg/mm/aaaa"
+              readonly
+              *ngIf="showForecastDates(i)"
+            />
+          </div>
+          <!-- forecast fine -->
+          <div class="tbl-item flex--center">
+            <input
+              class="task-input input--mid"
+              formControlName="endDateForecast"
+              placeholder="gg/mm/aaaa"
+              readonly
+              *ngIf="showForecastDates(i)"
+            />
+          </div>
+          <!-- progress -->
+          <div class="tbl-item flex--center">
+            <div
+              class="percent-box task-input input--mid"
+              [ngClass]="{ completed: isCompleted(i) }"
+            >
+              <input
+                class="input--mid centered"
+                formControlName="progress"
+                readonly
+              />
+              <span class="percent-symbol">%</span>
+            </div>
+          </div>
+          <!-- peso -->
+          <div class="tbl-item flex--center">
+            <div
+              class="percent-box task-input input--mid"
+              *ngIf="!isMultiproject(i)"
+            >
+              <input
+                class="input--mid centered"
+                formControlName="peso"
+                readonly
+              />
+              <span class="percent-symbol">%</span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </form>
+</div>

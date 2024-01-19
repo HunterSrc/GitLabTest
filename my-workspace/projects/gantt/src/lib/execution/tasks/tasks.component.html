@@ -1,0 +1,234 @@
+<div class="main-container">
+  <div class="tbl-header" #header>
+    <ng-container *ngIf="showHeader">
+      <ng-container *ngFor="let th of headers" class="col-container">
+        <div class="tbl-header-item">{{ th?.name }}</div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <form [formGroup]="mainForm">
+    <div class="tbl" #itemsTable formArrayName="itemsForms">
+      <ng-container
+        *ngFor="let item of itemsForms.controls; let i = index"
+        class="row-container"
+      >
+        <ng-container [formGroupName]="i" *ngIf="showRow(i)">
+          <!-- activity -->
+          <div class="tbl-item gantt-item small-font activity-item">
+            <div [ngClass]="getPadding(i)" style="width: 100%">
+              <div class="flex--start-col">
+                <div
+                  class="activity-gantt-item description-elements"
+                  [class]="getWidth(i)"
+                  [ngClass]="{
+                    'no-arrow-button': !isCollapsable(i) && showDescription(i)
+                  }"
+                >
+                  <div>
+                    <span
+                      style="line-height: 2.5rem"
+                      class="navigable-text"
+                      [ngClass]="{ current: isCurrent(i) }"
+                      (click)="navigateToItem(i)"
+                      >{{ getItemAtIndex(i).code }}
+                    </span>
+                    <button
+                      mat-icon-button
+                      *ngIf="isCollapsable(i)"
+                      class="btn--grid-line"
+                      (click)="onCollapseToggle(i)"
+                    >
+                      <mat-icon>
+                        {{
+                          isCollapsed(i)
+                            ? 'keyboard_arrow_up'
+                            : 'keyboard_arrow_down'
+                        }}
+                      </mat-icon>
+                    </button>
+                    <div
+                      *ngIf="showDescription(i)"
+                      class="item-description"
+                      [ngClass]="getWidth(i)"
+                    >
+                      Descrizione: {{ getDescription(i) }}
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center">
+                    <!-- TOGGLE -->
+                    <mat-slide-toggle
+                      color="primary"
+                      [ngClass]="
+                        isCollapsable(i)
+                          ? 'toggle-standard-activity'
+                          : 'toggle-without-arrow'
+                      "
+                      *ngIf="showToggleOdlCons(i)"
+                      (change)="showActivityToggle(i)"
+                      [checked]="showStandardActivity(i)"
+                      [disabled]="isToggleDisabled(i)"
+                    ></mat-slide-toggle>
+                    <button
+                      color="primary"
+                      mat-icon-button
+                      *ngIf="hasResetButton(i)"
+                      (click)="ResetWeight(i)"
+                      [disabled]="
+                        isReadonly(i) ||
+                        !getItemAtIndex(i).isActive ||
+                        hasWeightError
+                      "
+                      [matTooltip]="'Reset pesi attività standard'"
+                    >
+                      <mat-icon>restart_alt </mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- progress -->
+          <div class="tbl-item flex--center" *ngIf="showColumn('Progress')">
+            <div
+              class="percent-box task-input input--mid"
+              [ngClass]="{
+                completed: isCompleted(i),
+                editable: !isProgressReadOnly(i)
+              }"
+            >
+              <input
+                class="input--small"
+                formControlName="progress"
+                [readonly]="isProgressReadOnly(i)"
+              />
+              <span class="percent-symbol">%</span>
+            </div>
+          </div>
+          <!-- active -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.ATTIVA)"
+          >
+            <mat-slide-toggle
+              *ngIf="showActivation(i)"
+              [checked]="getItemAtIndex(i)?.isActive"
+              (change)="onActivationToggle(i)"
+              color="primary"
+            ></mat-slide-toggle>
+            <button
+              *ngIf="showCloseBatchAction(i)"
+              mat-stroked-button
+              class="btn--close"
+              (click)="onCloseBatch(i)"
+            >
+              Chiudi
+            </button>
+          </div>
+          <!-- baseline inizio -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.INIZIO_PIANIFICATO)"
+          >
+            <input
+              class="task-input input--mid"
+              formControlName="baselineStartDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+              *ngIf="showDates(i)"
+              [ngClass]="{ 'baseline-date': !isActive(i) }"
+            />
+          </div>
+          <!-- baseline fine -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.FINE_PIANIFICATA)"
+          >
+            <input
+              class="task-input input--mid"
+              formControlName="baselineEndDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+              *ngIf="showDates(i)"
+              [ngClass]="{ 'baseline-date': !isActive(i) }"
+            />
+          </div>
+          <!-- actual inizio -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.INIZIO_EFFETTIVO)"
+          >
+            <input
+              class="task-input input--mid"
+              formControlName="actualStartDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- actual fine -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.FINE_EFFETTIVA)"
+          >
+            <input
+              class="task-input input--mid"
+              formControlName="actualEndDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- forecast inizio -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.INIZIO_FORECAST)"
+          >
+            <input
+              *ngIf="showForecastDates(i)"
+              class="task-input input--mid"
+              formControlName="forecastStartDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- forecast fine -->
+          <div
+            class="tbl-item flex--center"
+            *ngIf="showColumn(GanttColumnsEnum.FINE_FORECAST)"
+          >
+            <input
+              *ngIf="showForecastDates(i)"
+              class="task-input input--mid"
+              formControlName="forecastEndDate"
+              placeholder="gg/mm/aaaa"
+              readonly
+            />
+          </div>
+          <!-- peso -->
+          <div class="tbl-item flex--center" *ngIf="showColumn('Peso')">
+            <div
+              class="percent-box task-input input--mid"
+              [ngClass]="{
+                'sibling-selected': hasHighlight(i),
+                'sibling-error': hasHighlightError(i),
+                editable: !isReadonly(i) && isWeightEditable(i)
+              }"
+            >
+              <input
+                class="input--mid"
+                formControlName="weight"
+                (focus)="onFocusWeight(i)"
+                (blur)="onBlurWeight()"
+                [readonly]="isReadonly(i) || !isWeightEditable(i)"
+                matTooltipPosition="left"
+                matTooltipClass="tooltip-error"
+                [matTooltip]="
+                  hasHighlightError(i) ? wrongPercentageMessage(i) : null
+                "
+              />
+              <span class="percent-symbol">%</span>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </form>
+</div>

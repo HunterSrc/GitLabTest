@@ -1,0 +1,132 @@
+@import '../../common-styles.scss';
+
+$activity-item-size: 500px;
+
+.resize-handle-right {
+  position: absolute;
+  height: 100%;
+  cursor: col-resize;
+  width: 5px;
+  right: 0;
+}
+
+.current {
+  font-weight: bold;
+  color: #3f51b5 !important;
+}
+
+.flex--start-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sibling-selected {
+  color: #3f51b5 !important;
+  border: 1px solid #3f51b5;
+}
+
+.sibling-error {
+  border: 1px red solid;
+  color: red !important;
+}
+
+div.item-description {
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  font-style: italic;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.no-arrow-button {
+  margin-bottom: 0.6rem;
+}
+
+.activity-gantt-item--level-0 {
+  width: calc(#{$activity-item-size} - 10px);
+}
+
+.activity-gantt-item--level-1 {
+  width: calc(#{$activity-item-size} - 20px);
+}
+
+.activity-gantt-item--level-2 {
+  // width: calc(#{$activity-item-size} - 35px);
+}
+
+.activity-gantt-item--level-3 {
+  width: calc(#{$activity-item-size} - 55px);
+}
+
+.activity-gantt-item--level-4 {
+  width: calc(#{$activity-item-size} - 75px);
+}
+
+.activity-gantt-item--level-5 {
+  width: calc(#{$activity-item-size} - 95px);
+}
+
+.activity-gantt-item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+span.navigable-text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.batch-date::placeholder {
+  color: black !important;
+  opacity: 0.5;
+}
+
+.task-input::placeholder {
+  color: darkgray !important;
+  opacity: 0.5;
+}
+
+.baseline-date {
+  background-color: #bbb;
+  color: #444;
+}
+
+.completed {
+  border: 3px solid rgb(255, 204, 102);
+}
+
+.toggle-standard-activity {
+  margin-left: 30px;
+}
+
+.toggle-without-arrow {
+  margin-left: 69px;
+  .tooltip-error {
+    color: red !important;
+    background-color: #fff;
+    border: 1px solid red;
+  }
+}
+.reset-button {
+  border-radius: 50%;
+  color: #fff;
+  background-color: #3f51b5;
+  margin-left: 1rem;
+}
+
+.description-elements {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

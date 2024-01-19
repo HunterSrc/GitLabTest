@@ -1,0 +1,19 @@
+<div mat-dialog-content class="message-container">
+  Vuoi confermare di voler procedere con la disattivazione delle attività
+  standard?
+  <br />
+  Ti ricordiamo che a seguito della selezione del tasto "Conferma", i dati
+  eventualmente presenti per tali attività standard verranno eliminati e non
+  potranno più essere recuperati.
+</div>
+<div mat-dialog-actions class="buttons">
+  <button mat-button (click)="onNoClick()">Annulla</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onConfirm()"
+    cdkFocusInitial
+  >
+    Conferma
+  </button>
+</div>
