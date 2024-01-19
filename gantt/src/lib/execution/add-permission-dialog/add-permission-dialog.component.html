@@ -1,0 +1,79 @@
+<div class="dialog-container">
+  <div class="title">{{ getMessage() }}</div>
+  <mat-divider class="divider"></mat-divider>
+
+  <div class="dialog-body-container">
+    <div class="permission-list">    
+      <div *ngFor="let permesso of newPermissions">
+        <div class="permission-item">
+          <span>
+            {{getPermissionString(permesso)}}
+          </span>
+          
+          <span class="material-icons" (click)="removePermission(permesso)">
+            close
+          </span>
+
+        </div>
+      </div>
+
+    
+    </div>
+
+    <form [formGroup]="formGroup" (ngSubmit)="addPermission()">
+      <div class="row row--form">
+        <mat-form-field appearance="fill" class="editable">
+          <mat-label>Numero protocollo</mat-label>
+          <input matInput value="" formControlName="protocolNumber" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="editable">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker7" formControlName="protocolDate" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker7"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker7></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="editable">
+          <mat-label>Tipologia permesso</mat-label>
+          <mat-select tabindex="3" formControlName="grantTypeCode">
+            <mat-option [value]="entiPubbliciType">{{entiPubblici}}</mat-option>
+            <mat-option [value]="entiTerritorialiType">{{entiTerritoriali}}</mat-option>
+            <mat-option [value]="autorizzazioneType">{{autorizzazione}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button
+          mat-fab
+          color="primary"
+          type="submit"
+          [disabled]="!formGroup.valid"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+
+      <div class="row row--form">
+        <mat-form-field appearance="fill" class="editable">
+          <mat-label>Descrizione concessione (campo obbligatorio)</mat-label>
+          <input matInput value="" formControlName="grantDescription" />
+        </mat-form-field>
+      </div>
+
+      <div class="row row--form error-message" *ngIf="alreadyCreated">
+        Concessione già presente nella lista.
+      </div>
+
+    </form>
+  </div>
+
+  <div class="button-container">
+    <button mat-stroked-button (click)="onDismiss()">Annulla</button>
+    <button mat-flat-button color="primary" (click)="onCreate()" [disabled]="newPermissions?.length === 0">
+      Crea permessi
+    </button>
+  </div>
+</div>

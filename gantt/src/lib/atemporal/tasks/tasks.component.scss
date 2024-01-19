@@ -1,0 +1,83 @@
+@import '../../common-styles.scss';
+
+.tbl-header-item {
+    padding: auto;
+}
+
+.btn--constraint {
+    font-size: 0.8rem !important;
+    height: 23px !important;
+    line-height: 23px !important;
+    min-height: 23px !important; 
+    padding: 1px 5px !important;
+    vertical-align: middle !important;
+}
+
+.count-constraint {
+    background-color: lightgray;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: white;
+    display: inline-block;
+    font-size: 0.7rem;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 5px;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    margin-bottom: 0.25rem;
+    padding-right: 0.1rem;
+}
+
+table.export-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr.inner {
+        border-top: 1px solid lightgray;
+
+        &:last-child {
+            border-bottom: 1px solid lightgray;
+        }
+    }
+
+    th {
+        font-size: 0.8rem;
+        color: darkgray;
+        text-align: center;
+        padding: auto;
+
+        &:first-child {
+            padding-left: 10px;
+            text-align: left;
+        }
+    }
+
+    td {
+        font-size: 1rem;
+        color: darkgray;
+        border-left: 1px solid lightgray;
+        box-sizing: border-box;
+        height: 25px;
+
+        &.code {
+            padding-left: 10px;
+        }
+
+        &.centered {
+            text-align: center;
+        }
+    }
+
+    tr, td, th { padding: 0; }
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

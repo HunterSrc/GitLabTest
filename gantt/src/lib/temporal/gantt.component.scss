@@ -1,0 +1,10 @@
+@import '../common-styles.scss';
+
+lib-temporal-tasks {
+  @include lib-gantt-tasks;
+}
+
+lib-temporal-grid {
+  @include lib-gantt-grid;
+}
+

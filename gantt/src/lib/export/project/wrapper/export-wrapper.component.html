@@ -1,0 +1,14 @@
+<div class="scrollable">
+    <div *ngFor="let page of pages">
+        <lib-export-project
+            [currentPage]="page"
+            [pageMap]="getGanttRowsMap(page)"
+            [projectName]="projectName"
+            [projectCode]="projectCode"
+            [maker]="maker"
+            [timePrecision]="timePrecision"
+            [date]="date"
+            [startYear]="startYear">
+        </lib-export-project>
+    </div>
+</div>

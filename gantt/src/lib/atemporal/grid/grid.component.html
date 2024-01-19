@@ -1,0 +1,19 @@
+<div class="main-container">
+    <div class="grid-header" #header>
+        <ng-container *ngIf="showHeader">
+            <ng-container *ngFor="let col of cols" class="col-container">
+                <div class="hd-grid-item">{{ col }}</div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="grid-container">
+        <div class="grid grid--background" #backgroundGrid>
+            <ng-container *ngFor="let row of rows" class="row-container">
+                <ng-container *ngFor="let col of cols" class="col-container">
+                    <div class="bg-grid-item"></div>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="grid" #ganttGrid></div>
+    </div>
+</div>

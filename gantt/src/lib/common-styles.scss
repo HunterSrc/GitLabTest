@@ -1,0 +1,346 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/***************************************
+ *                 Tasks               *
+ ***************************************/
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tbl {
+  border-top: 1px solid lightgray;
+  display:  grid;
+  top: 0px;
+  left: 0px;
+}
+
+.tbl-header {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.tbl-header-item {
+  font-size: 0.8rem;
+  color: darkgray;
+  text-align: center;
+}
+
+.tbl-header-item:first-child {
+  padding-left: 10px;
+  text-align: left;
+}
+
+.tbl-item {
+  font-size: 1rem;
+  color: darkgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
+}
+
+::ng-deep mat-slide-toggle {
+  height: 1.53rem !important;
+  line-height: 1.53rem !important;
+
+  .mat-slide-toggle-bar {
+    height: 0.9rem !important;
+    width: 2.31rem !important;
+  }
+
+  .mat-slide-toggle-thumb-container {
+    width: 1.29rem !important;
+    height: 1.29rem !important;
+
+    .mat-slide-toggle-thumb {
+      height: 1.29rem !important;
+      width: 1.29rem !important;
+    }
+
+    .mat-slide-toggle .mat-slide-toggle-ripple {
+      height: 2.57rem !important;
+      width: 2.57rem !important;
+      top: calc(50% - 1.29rem) !important;
+      left: calc(50% - 1.29rem) !important;
+    }
+  }
+} 
+
+
+.input--small {
+  width: 60%;
+}
+
+.input--mid {
+  width: 75%;
+}
+
+.input--large {
+  width: 100%;
+}
+
+.flex--center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.constraint {
+  display: flex;
+  width: auto;
+  align-items: center;
+}
+
+.small-font {
+  font-size: 0.9rem;
+}
+
+.btn--grid-line {
+  width: 39px;
+  height: 39px;
+}
+
+.btn--close {
+  width: 90% !important;
+  height: 90% !important;
+  min-height: unset !important; 
+  min-width: unset !important;
+  padding: 1px 0px !important;
+  font-size: 0.9rem;
+}
+
+.btn--associate {
+  width: 90% !important;
+  height: 90% !important;
+  min-height: unset !important; 
+  min-width: max-content !important;
+  padding: 1px 0px !important;
+  font-size: 0.9rem;
+}
+
+mat-chip-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 0px 15px;
+  height: 100%;
+}
+
+.gantt-item {
+  display: flex;
+  align-items: center;
+}
+
+.gantt-item--level-0 {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.gantt-item--level-1 {
+  padding-left: 20px;
+}
+
+
+.gantt-item--level-2 {
+  padding-left: 35px;
+  font-style: italic;
+}
+
+.gantt-item--level-3 {
+  padding-left: 55px;
+}
+
+.gantt-item--level-4 {
+  padding-left: 75px;
+}
+
+.gantt-item--level-5 {
+  padding-left: 95px;
+}
+
+
+/* Task cells */
+.task-input {
+  background-color: #f2f2f2;
+  border: 1px solid lightgray;
+  color: gray;
+  cursor: default;
+  outline: none;
+
+  &::placeholder {
+    color: #505050;
+    opacity: 0.5;
+  }
+
+  input {
+    color: gray !important;
+  }
+}
+
+.task-input-editable {
+  background-color: white;
+  border: 1px solid lightgray;
+  cursor: default;
+  outline: none;
+
+  &::placeholder {
+    color: #505050;
+    opacity: 0.5;
+  }
+
+  input {
+    color: gray !important;
+  }
+}
+
+.editable {
+  cursor: text !important;
+  background-color: white !important;
+  color: black !important;
+
+  &:focus {
+    box-shadow: 0px 0px 1px black;
+  }
+}
+
+/***************************************
+ *                 Grid                *
+ ***************************************/
+.grid-header {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.grid-container {
+  position: relative;
+}
+
+.hd-grid-item {
+  font-size: 0.8rem;
+  color: darkgray;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1001;
+}
+
+.grid--background {
+  border-top: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  z-index: 1000;
+}
+
+.bg-grid-item {
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
+}
+
+.milestone {
+  width: 0;
+  height: 0;
+  border: 15px solid transparent;
+  border-bottom-color: #ABDC94;
+  position: relative;
+  top: -15px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 15px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: #ABDC94;
+  }
+}
+
+div.percent-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    border: none !important;
+    background-color: transparent !important;
+    color: gray;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  .percent-symbol {
+    font-size: 0.9rem;
+    color: #505050;
+  }
+}
+
+div.percent-box.editable {
+  input {
+    color: black;
+  }
+}
+
+.milestone--inactive{
+  border-bottom-color: rgba(0,0,0,0.25);
+  &:after {
+    border-top-color: rgba(0,0,0,0.25);
+  }
+}
+
+/***************************************
+ *                 Gantt               *
+ ***************************************/
+$scrollbar-thumb-color: #555;
+
+.gantt-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.grid-viewport {
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  scrollbar-color: $scrollbar-thumb-color white;
+}
+
+
+.grid-viewport::-webkit-scrollbar-track {
+  background-color: white;
+  border: 0px;
+}
+
+.grid-viewport::-webkit-scrollbar {
+  height: 12px;
+  background-color: #F5F5F5;
+}
+
+.grid-viewport::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: $scrollbar-thumb-color;
+}
+
+@mixin lib-gantt-tasks {
+  height: 100%;
+  margin-bottom: 12px;
+}
+
+@mixin lib-gantt-grid {
+  height: 100%;
+}

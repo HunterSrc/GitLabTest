@@ -1,0 +1,29 @@
+<div class="scrollable">
+    <div *ngFor="let page of pages">
+        <lib-export-atemporal
+            *ngIf = "isAtemporal"
+            [currentPage]="page"
+            [project]="project"
+            [durationMap]="phaseDurationMap"
+            [pageMap]="getPageMap(page)"
+            [projectName]="projectName"
+            [projectCode]="projectCode"
+            [timePrecision]="timePrecision"
+            [maker]="maker"
+            [date]="date">
+        </lib-export-atemporal>
+        <lib-export-temporal
+            *ngIf = "!isAtemporal"
+            [currentPage]="page"
+            [project]="project"
+            [durationMap]="phaseDurationMap"
+            [pageMap]="getPageMap(page)"
+            [projectName]="projectName"
+            [projectCode]="projectCode"
+            [timePrecision]="timePrecision"
+            [maker]="maker"
+            [startYear]="startYear"
+            [date]="date">
+        </lib-export-temporal>
+    </div>
+</div>

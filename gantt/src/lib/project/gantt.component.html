@@ -1,0 +1,8 @@
+<div class="gantt-wrapper" id="gantt">
+  <lib-project-tasks [locked]="ganttLocked" [editableTypes]="editableTypes" #tasks></lib-project-tasks>
+  <div [ngClass]="{ 'grid-viewport': !export }">
+    <lib-project-grid #grid></lib-project-grid>
+  </div>
+  <div>
+  </div>
+</div>

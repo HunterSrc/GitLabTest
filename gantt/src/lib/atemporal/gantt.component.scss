@@ -1,0 +1,24 @@
+@import '../common-styles.scss';
+
+lib-atemporal-tasks {
+  @include lib-gantt-tasks;
+}
+
+lib-atemporal-grid {
+  @include lib-gantt-grid;
+}
+
+.btn-container {
+  padding: 0.5rem;
+}
+
+:host ::ng-deep .mat-button-toggle-label-content {
+  line-height: 36px !important;
+}
+
+.gantt-options-container {
+  padding: 15px 5px 15px 5px;
+  mat-button-toggle {
+    margin-left: 15px;
+  }
+}
