@@ -21,30 +21,30 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { StandardActivityResetConfirmDialogComponent } from './tasks/components/standard-activity-reset.component';
 
 @NgModule({
-    declarations: [
-        GanttExecutionComponent,
-        GridComponent,
-        TasksComponent,
-        ColumnsDialogComponent,
-        ConfirmDialogComponent,
-        StandardActivityResetConfirmDialogComponent,
-        ConfirmDialogGeneralComponent
-    ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatChipsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        MatDialogModule,
-        MatButtonToggleModule,
-        MatCheckboxModule,
-        MatToolbarModule,
-        LegendModule,
-        MatTooltipModule
-    ],
-    providers: [GanttExecutionService],
-    exports: [GanttExecutionComponent]
+  declarations: [
+    GanttExecutionComponent,
+    GridComponent,
+    TasksComponent,
+    ColumnsDialogComponent,
+    ConfirmDialogComponent,
+    StandardActivityResetConfirmDialogComponent,
+    ConfirmDialogGeneralComponent
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    LegendModule,
+    MatTooltipModule
+  ],
+  providers: [GanttExecutionService],
+  exports: [GanttExecutionComponent]
 })
 export class GanttExecutionModule {}

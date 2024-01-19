@@ -17,32 +17,32 @@ import { GanttProjectModule } from './project/gantt.module';
 import { GanttTemporalModule } from './temporal/gantt.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        GanttAtemporalModule,
-        GanttTemporalModule,
-        GanttExecutionModule,
-        GanttProjectModule,
-        GanttMultiProjectModule,
-        MatDividerModule,
-        MatSelectModule,
-        MatIconModule,
-        MatChipsModule,
-        MatButtonModule,
-        MatTooltipModule
-    ],
-    exports: [
-        GanttAtemporalModule,
-        GanttTemporalModule,
-        GanttExecutionModule,
-        GanttProjectModule,
-        GanttMultiProjectModule
-    ],
-    declarations: [
-        GanttAtemporalExportComponent,
-        GanttTemporalExportComponent,
-        GanttExportWrapperComponent
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    GanttAtemporalModule,
+    GanttTemporalModule,
+    GanttExecutionModule,
+    GanttProjectModule,
+    GanttMultiProjectModule,
+    MatDividerModule,
+    MatSelectModule,
+    MatIconModule,
+    MatChipsModule,
+    MatButtonModule,
+    MatTooltipModule
+  ],
+  exports: [
+    GanttAtemporalModule,
+    GanttTemporalModule,
+    GanttExecutionModule,
+    GanttProjectModule,
+    GanttMultiProjectModule
+  ],
+  declarations: [
+    GanttAtemporalExportComponent,
+    GanttTemporalExportComponent,
+    GanttExportWrapperComponent
+  ]
 })
 export class GanttModule {}

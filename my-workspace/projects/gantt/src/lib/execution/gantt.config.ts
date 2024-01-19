@@ -20,16 +20,16 @@ export const INACTIVE = 'rgba(0,0,0,0.25)';
 
 export const DEFAULT_COLUMNS = ['Attività', 'Progress', 'Peso'];
 export const DESCRIPTION_TYPE_CODES = new Set([
-    'NR_PROJECT',
-    'COMMISSION',
-    'JOB_ORDER',
-    'VR_PROJECT',
-    'TENDER_CALL',
-    'TENDER_CONTRACT',
-    'CONTRACT'
-    // 'CONV_JOB_ORDERS',
-    // 'PUB_MAIN_AUTH',
-    // 'PUB_SEC_AUTH',
-    // 'PRI_AUTH',
-    // 'BATCH'
+  'NR_PROJECT',
+  'COMMISSION',
+  'JOB_ORDER',
+  'VR_PROJECT',
+  'TENDER_CALL',
+  'TENDER_CONTRACT',
+  'CONTRACT'
+  // 'CONV_JOB_ORDERS',
+  // 'PUB_MAIN_AUTH',
+  // 'PUB_SEC_AUTH',
+  // 'PRI_AUTH',
+  // 'BATCH'
 ]);

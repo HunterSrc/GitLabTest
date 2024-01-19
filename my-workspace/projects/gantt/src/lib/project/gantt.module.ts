@@ -15,24 +15,24 @@ import { GridComponent } from './grid/grid.component';
 import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
-    declarations: [
-        GanttProjectComponent,
-        GridComponent,
-        TasksComponent,
-        GanttProjectExportWrapperComponent,
-        GanttTemporalExportComponent
-    ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatChipsModule,
-        MatIconModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        MatDialogModule,
-        MatSnackBarModule
-    ],
-    providers: [GanttProjectService],
-    exports: [GanttProjectComponent, GanttProjectExportWrapperComponent]
+  declarations: [
+    GanttProjectComponent,
+    GridComponent,
+    TasksComponent,
+    GanttProjectExportWrapperComponent,
+    GanttTemporalExportComponent
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatSnackBarModule
+  ],
+  providers: [GanttProjectService],
+  exports: [GanttProjectComponent, GanttProjectExportWrapperComponent]
 })
 export class GanttProjectModule {}
